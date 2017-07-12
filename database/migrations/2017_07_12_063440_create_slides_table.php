@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRatesTable extends Migration
+class CreateSlidesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateRatesTable extends Migration
      */
     public function up()
     {
-        Schema::create('rates', function (Blueprint $table) {
-            $table->increments('rate_id');
-            $table->int('user_id')->unsigned();
-            $table->foreign('user_id')->references('user_id')->on('users')->onDelete('cascade');
-            $table->float('point');
+        Schema::create('slides', function (Blueprint $table) {
+            $table->increments('slide_id');
+            $table->string('slide_imge_link');
+            $table->integer('status');
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CreateRatesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('rates');
+        Schema::dropIfExists('slides');
     }
 }

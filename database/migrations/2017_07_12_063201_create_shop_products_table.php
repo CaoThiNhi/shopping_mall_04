@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePaymentsTable extends Migration
+class CreateShopProductsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreatePaymentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('payments', function (Blueprint $table) {
-            $table->increments('payment_id');
-            $table->int('payment_type_id')->unsigned();
-            $table->foreign('payment_type_id')->references('payment_type_id')->on('payment_types')->onDelete('cascade');
+        Schema::create('shop_products', function (Blueprint $table) {
+            $table->increments('shop_product_id');
+            $table->string('shop_product_name');
+            $table->string('avatar_image_link');
+            $table->string('introdution')->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreatePaymentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('payments');
+        Schema::dropIfExists('shop_products');
     }
 }

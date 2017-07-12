@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSlidesTable extends Migration
+class CreateNotificationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateSlidesTable extends Migration
      */
     public function up()
     {
-        Schema::create('slides', function (Blueprint $table) {
-            $table->increments('slide_id');
-            $table->string('slide_imge_link');
-            $table->int('status');
+        Schema::create('notifications', function (Blueprint $table) {
+            $table->increments('notifi_id');
+            $table->string('content');
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreateSlidesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('slides');
+        Schema::dropIfExists('notifications');
     }
 }
