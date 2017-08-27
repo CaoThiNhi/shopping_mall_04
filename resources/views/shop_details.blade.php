@@ -77,7 +77,7 @@
                     </div>
                 </div>
                 <div class="site-block text-center">
-                    <a href="contact.html" class="btn btn-lg btn-primary">Shop's product <i class="fa fa-arrow-right"></i></a>
+                    <a href="{{ route('product_shop', $shop_product->shop_product_id) }}" class="btn btn-lg btn-primary">Shop's product <i class="fa fa-arrow-right"></i></a>
                 </div>
             </section>
             <!-- END Company Info -->
